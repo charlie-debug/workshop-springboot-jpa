@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import ch.qos.logback.core.net.server.Client;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,8 +27,11 @@ public class User implements Serializable {
 	private String email;
 	private String phone;
 	private String password;
-	@OneToMany(mappedBy = "client")
+	
+	
+    @OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
+	
 
 	public User() {
 
@@ -99,6 +105,8 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 
 	
 
