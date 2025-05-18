@@ -8,17 +8,24 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.curso.entities.User;
 import com.springboot.curso.repositories.UserRepository;
+
 @Service
 public class UserService {
-@Autowired	
-private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-public List<User> findAll(){
-	return userRepository.findAll();
-}
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
 
-public User findById(Long id) {
-    Optional<User> obj = userRepository.findById(id);
-    return obj.get();
-}
+	public User findById(Long id) {
+		Optional<User> obj = userRepository.findById(id);
+		return obj.get();
+	}
+
+	public User insert(User obj) {
+		return userRepository.save(obj);
+
+	}
+
 }
